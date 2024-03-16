@@ -1,0 +1,14 @@
+\providecommand{\href}[2]{#2}\begingroup\zihao{5}\begin{thebibliography}{1}\linespread{1}\selectfont\setlength{\baselineskip}{16pt}\setlength{\parskip}{0pt}
+\makeatletter
+\providecommand \href@noop [0]{\@secondoftwo}%
+
+\bibitem{Biot_Savart_Law}
+Wikipedia. { Biot–savart law}[Z], 2024. \url{https://en.wikipedia.org/wiki/Biot%E2%80%93Savart_law}, last edited on 19 February 2024, at 16:11 (UTC).
+
+\bibitem{圆柱形永磁体磁场建模及仿真研究}
+周恩权, 郑仲桥, 张燕红, 等. { 圆柱形永磁体磁场建模及仿真研究}[J]. 河南科技, 2017, 21:139--143.
+
+\bibitem{Numerical_Analysis}
+Sauer T. \href@noop {} {{ Numerical analysis}[M]}. Pearson, 2019: 253--289.
+
+\end{thebibliography}\endgroup
