@@ -101,21 +101,30 @@
 
 
 %中文摘要
-\ZhAbstract{磁场的约束是一个非常重要的研究课题，但同时也是个十分复杂的问题；目前还没
-有求解复杂磁场系统力学的解析方法，只能通过数值计算来求解，现有的数值积分算法主要有Monte Carlo 算法、
-Adaptive complex Simpson 算法、Gauss 积分、Romberg积分等。 它们均存在优势与短板，同时在低算力
-下也很难对这个问题进行求解。于是如何设计、优化算法就成了不可避免地问题。但通过实验
-对永磁体在磁场约束下的复摆运动进行分析,可以给出一些定性的实验规律。}{磁场；复摆；数值分析}
+\ZhAbstract{磁场约束是一个重要的研究课题，但也是一个复杂的问题。目前，
+还没有解决复杂磁场系统力学问题的分析方法，因此数值计算是唯一可行的方法。为
+了解决这个问题，人们开发了各种算法，如蒙特卡罗算法、自适应复辛普森算法、高
+斯积分和朗伯格积分。每种算法都有其优势和局限性，对于低算力系统来说，计算效率
+可能是一个挑战。因此，设计高效的算法仍然是一个至关重要的问题。本研究旨在分析
+永磁体在磁场约束下的复杂摆动运动，并提供可用于实际的定性实验结论。}
+{磁场；复摆；数值分析}
 
 
 %英文摘要
-\EnAbstract{Magnetic field confinement is a very important research topic, but it is also a very complicated
-problem. At present, there is no analytical method to solve the mechanics of complex magnetic
-field systems, which can only be solved by numerical calculation, The main algorithm to slove this are 
-Monte Carlo algorithm, Adaptive complex Simpson algorithm, Gauss Integral, Romberg Integral and so on.
-All of them have their goods and shorts, and it is difficult to work when the arithmetic power is low.
-so how to design the algorithm becomes an inevitable problem. By analyzing the complex pendulum motion of
-permanent magnet constrained by magnetic field, some useful qualitative experimental rules can be given.}
+\EnAbstract{Magnetic field confinement is a significant 
+research topic, but it is also a complex problem. Currently, 
+there is no analytical method available for solving the 
+mechanics of complex magnetic field systems, making numerical 
+calculations the only viable approach. Various algorithms, 
+such as the Monte Carlo algorithm, adaptive complex Simpson 
+algorithm, Gauss integral, and Romberg integral, have been 
+developed to tackle this problem. Each algorithm has its 
+advantages and limitations, and computational efficiency may 
+be a challenge for low-powered systems. Therefore, designing 
+efficient algorithms remains a crucial concern. This study 
+aims to analyze the complex pendulum motion of a permanent 
+magnet constrained by a magnetic field and provide qualitative 
+experimental rules that can be of practical use.}
 {magnetic field; complex pendulum; numerical analysis}
 
 %生成目录
@@ -449,32 +458,38 @@ $F_c = \int_{\Omega} \rho\omega^2r \,d\Omega$，其中$\Omega$表
 上述的摆动形式是在理想的情况下才能观察到，实际很难看到；下面将定性分析实际中的复杂摆动。
 
 \subsection{进动、章动与过渡}
-由于棒与板之间存在摩擦，摆动的能量就会损耗，这会使圆锥摆向复摆过渡；这种过渡的结果就是产生了进动和章动。
-因为圆锥摆会退化为平面的摆动，但它很难达到不偏离轴平面（定义通过轴的复摆摆动平面为轴平面），于是根据上面的受力分析，
-会有一个指向轴的磁场力，这会产生一个力矩，这个力矩的作用效果就是使棒进动。但如果它大了或小了，那么就变成了章动。
+由于棒与板之间存在摩擦，摆动的能量会逐渐损耗，这导致圆锥摆逐渐过渡为复摆运动。
+在过渡过程中，会出现进动和章动现象。复摆本质上是平面摆动，但很难实现完全沿轴
+平面（定义通过轴的复摆摆动平面为轴平面）摆动，因此根据前面的受力分析，会出现指
+向轴的磁场力，产生一个力矩作用，导致棒的进动。如果进动力矩过大或过小，就会转出现
+章动现象。
 
 \subsection{微小因素}
-除了重力、磁力等比较大的影响因素外，还有许多微小的影响因素，这里列举三个。
+除了重力、磁力等较大的影响因素外，还有一些微小的影响因素，这里列举三个。
 
-第一，地磁场的作用。这个在要求精度不高的情况下可以忽略。地磁场的大小为$0.5-0.6Gs$，
-而钕磁铁一般为$12200-14800Gs$，相比之下，可以忽略地磁。
+首先是地磁场的影响。在要求较低精度的情况下，可以忽略地磁场的作用。
+地磁场的强度约为$0.5-0.6Gs$，而钕磁铁的磁场强度一般为$12200-14800Gs$，
+相比之下，地磁场可以忽略不计。
 
-第二，科氏力。由于地球是非惯性系，棒在运动过程中会受到科氏力的作用。取最大的角度使$F_k = 2v\omega$，
-这样近似结果约为$10^{-4}N$。实验上，在控制无垂直于振动面的速度情况下，摆顺逆时针进动出现
-的概率近似相等。说明科氏力的影响比较小。
+其次是科氏力的影响。由于地球是非惯性系，棒在运动过程中会受到科氏力的影响。
+取最大角度使科氏力$F_k = 2v\omega$，这样近似结果约为$10^{-4}N$。
+实验中，在控制无垂直于振动面的速度情况下，顺时针和逆时针进动的概率近似相等，说明科氏力的影响较小。
 
-第三，电磁感应。在棒摆运动的过程中，它产生的磁场会反复磁化介质板和上方磁铁，这会产生电磁波损耗能量。
-但实际上它非常小，可以忽略其对实验的影响。
+
+第三个影响因素是电磁感应。在棒摆运动过程中，它的磁场会反复磁化介质板和
+上方磁铁，从而导致能量的电磁波损耗。然而，实际上这种影响非常微小，可以忽略其对
+实验的影响。
 
 \subsection{其他}
-上面考虑的是上方圆柱形磁铁的情形，形状不同的磁铁只需重新计算磁场即可，其他可以类比。对于顶点的位置，
-实际上在摆动过程中其并不是固定的。而像板的厚度，材料，棒的长度等影响因素其实包含在了微分
-方程中，它们是作为参数的形式起作用的。
+前面考虑的是上方圆柱形磁铁的情况，对于形状不同的磁铁，只需重新计算磁场即可，
+其他方面可以类比。关于顶点的位置，实际上在摆动过程中它并不是固定的。至于板的
+厚度、材料和棒的长度等影响因素，它们实际上包含在微分方程中，并以参数的形式起作用。
 
 \chapter{预实验及其结果}
 \section{实验装置}
-如图\ref{magnet}是实验中用到的磁铁，其中较长的是作为棒的，还有两个与之相同的，可以拼接在
-一起以改变棒长。
+
+如图\ref{magnet}所示，实验中使用的磁铁包括一个较长的拼接磁铁作为棒，
+并且还有两个与之相同的磁铁，可以拼接在一起以改变棒的长度。
 \begin{figure}[H]
     \centering
     \includegraphics[width=8cm]{figures/magnet.png}
@@ -482,25 +497,31 @@ $F_c = \int_{\Omega} \rho\omega^2r \,d\Omega$，其中$\Omega$表
     \label{magnet}
 \end{figure}
 
-对于实验中用到的器材的参数请见附录\ref{参数}中的表\ref{实验器材参数}。
+有关实验所用器材的参数，请参见附录\ref{参数}中的表\ref{实验器材参数}。
 
-预实验的实验平台比较简陋，亚克力板是由两个铁架台夹住的。但这不影响预实验的总体效果。
+预实验的实验平台相对简单，亚克力板被夹在两个铁架台之间。然而，这并不影响预实验的总体效果。
 
 \section{实验方法}
-项目考虑到数据的收集方式对实验结果会有一定的影响，于是在预实验中对比了两种方法——
-1.摄像法。以手机摄像功能对实验过程进行录像，后续通过视频处理软件数出两个“周期”的周期的
-帧数，进而得出周期的大小。2.声波法。通过手机记录摆动过程中的音频数据，由于棒和板碰撞的过程中
-响度较大，所以可以通过声波振幅谱中峰值的时间间隔得出周期。
+在项目中考虑到数据收集方式对实验结果的影响，因此在预实验中比较了两种方法：
+
+\begin{itemize}
+    \item 摄像法：使用手机的摄像功能对实验过程进行录像，然后通过视频处理软件计算出两个“周期”所需的帧数，从而得到周期的大小。
+    \item 声波法：通过手机记录摆动过程中的音频数据。由于棒和板碰撞时产生的声音较大，因此可以通过测量声波振幅谱中峰值之间的时间间隔来确定周期。
+\end{itemize}
+
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=11cm]{figures/ways.png}
     \caption{摄像法（左）和声波法（右）}
     \label{ways}
 \end{figure}
+两种方法在判断碰撞时刻方面都存在一个共同的缺点，即无法准确确定碰
+撞的时刻。然而，通过实验比较发现，声波法相对于摄像法在稳定性和可操作
+性方面表现更好，如图\ref{data_ways}所示。因此，选择声波法作为正式实
+验的数据处理方法。
 
-两种方法均有一个共同的缺点——无法准确判断碰撞的时刻。但是通过实验得到
-声波法的稳定性和可操作性较摄像法更好，如图\ref{data_ways}。因此选择其作为
-正式实验的实验方法。
 
 \begin{figure}[H]
     \centering
@@ -512,13 +533,13 @@ $F_c = \int_{\Omega} \rho\omega^2r \,d\Omega$，其中$\Omega$表
 \section{结论}
 
 \begin{itemize}
-    \item 介质板只有在厚度不是太小时，才能使轴线成为一个稳定的平衡点。
+    \item 当介质板的厚度不太小时，才能使轴线成为一个稳定的平衡点。
 
-    \item 比较预实验采用的两种数据处理方法，声波法处理误差更小，实验数据相对稳定。 
+    \item 在比较预实验采用的两种数据处理方法时，发现声波法的处理误差较小，实验数据相对稳定。
 
-    \item 随着倾角的减小，摆的周期递减；当角度小到一定程度时，摆周期将会迅速减小为零。
+    \item 随着倾角的减小，摆的周期递减；当角度减小到一定程度时，摆周期将迅速减小为零。
 
-    \item 控制相关因素，摆顺逆时针摆动都会出现，说明科氏力影响较小。 
+    \item 在控制其他相关因素的情况下，摆可以顺时针和逆时针摆动，这说明科氏力的影响较小。 
 \end{itemize}
 
 
