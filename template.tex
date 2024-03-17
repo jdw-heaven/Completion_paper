@@ -114,8 +114,7 @@ problem. At present, there is no analytical method to solve the mechanics of com
 field systems, which can only be solved by numerical calculation, The main algorithm to slove this are 
 Monte Carlo algorithm, Adaptive complex Simpson algorithm, Gauss Integral, Romberg Integral and so on.
 All of them have their goods and shorts, and it is difficult to work when the arithmetic power is low.
-so how to design the algorithm becomes an inevitable problem, and the existing numerical analysis methods are difficult to solve
-this problem under low computational force. By analyzing the complex pendulum motion of
+so how to design the algorithm becomes an inevitable problem. By analyzing the complex pendulum motion of
 permanent magnet constrained by magnetic field, some useful qualitative experimental rules can be given.}
 {magnetic field; complex pendulum; numerical analysis}
 
@@ -157,11 +156,11 @@ permanent magnet constrained by magnetic field, some useful qualitative experime
     }
 \end{center}
 项目以此题为基础，探究了磁场约束下永磁体棒的运动，得到了棒的复摆运动周期与磁场分布、棒的长度
-和介质板厚度的定性关系，比提供了大量数据，为经验公式的创建提供了必要支持。
+和介质板厚度的定性关系，提供了大量数据，为经验公式的创建提供了必要支持。
 
 对于复杂系统的求解目前没有解析解法，只能使用数值算法。项目从最基本的Biot–Savart 定律出发建立
 微分方程，通过数值积分的方式求解，得到了磁场在空间中的分布。通过COMSOL仿真软件模拟物理场，得出了
-在棒长较短时与试验相符合的结果。
+在棒长较短时与实验相符合的结果。
 
 通过文献调研，在此之前没有任何相关文献记载此类问题的研究，项目建立在自主创新的基础上对此问题
 进行了较为全面的探究。
@@ -169,15 +168,14 @@ permanent magnet constrained by magnetic field, some useful qualitative experime
 本文的主要内容分为一下几个方面：
 
 第二章具体推导了永磁体的磁场分布以及受力情况，并给出了数值算法的基本思路。同时也考虑了相关
-因素对于本试验的影响。
+因素对于本实验的影响。
 
 第三章给出了预实验的基本方法以及得到的结果。为正式实验找寻到了更为合适的方式。
 
 第四章介绍了正式实验的过程、数据的具体分析以及从数据及实验过程中可以得到的结论。同时介绍了
 项目组在实验中发明的一种比较实用的一种准直方法——“滚动准直法”。
 
-第五章根据实验的各类参数设计了数值算法计算了磁场的分布，同时进行了物理场仿真模拟，对问题的
-感悟有了进一步加深。
+第五章根据实验的各类参数设计了数值算法计算了磁场的分布，同时进行了物理场仿真模拟，对问题有了进一步了解。
 
 最后第六章对整个项目进行回顾、总结与展望。
 
@@ -185,7 +183,7 @@ permanent magnet constrained by magnetic field, some useful qualitative experime
 \section{磁场}
 Biot-Savart law\cite{Biot_Savart_Law}是描述恒定电流产生的磁场的方程，这是一个近似方程。
 因为根据量子力学，磁性起源于轨道电流和自旋电流且自旋电流占有很大一部分。但是其与安培定律和高斯定理
-是相容的，可以说其实磁场近似计算非常好的方程。本项目以此定律为基础建立了永磁体的磁场分布
+是相容的，可以说其是磁场近似计算非常好的方程。本项目以此定律为基础建立了永磁体的磁场分布
 方程。
 
 总体来说，形状及充磁方向一致的永磁体磁场分布大致相同，不同的是相对强度的大小。对于圆柱体永磁体，假设其
@@ -198,7 +196,7 @@ Biot-Savart law\cite{Biot_Savart_Law}是描述恒定电流产生的磁场的方�
 \end{figure}
 Biot-Savart 定律的微分形式（考虑磁介质）为：
 \begin{equation}
-    d\mathbf {B} (\mathbf {r} )={\frac {\mu}{4\pi }}{\frac {I\,d{\boldsymbol {\ell }}\times \mathbf {r'} }{|\mathbf {r'} |^{3}}}
+    d\mathbf {B} (\mathbf {r} )={\frac {\mu}{4\pi }}{\frac {I\,d{\boldsymbol {\ell }}\times \mathbf {r} }{|\mathbf {r} |^{3}}}
 \end{equation}
 在图\ref{magneticfield}中：
 \begin{equation}
@@ -253,7 +251,7 @@ Biot-Savart 定律的微分形式（考虑磁介质）为：
 \subsection{可行性推导}
 对于项目研究的系统，介质板可以被视为是无限大的，这样磁场就是轴对称的。如图\ref{force_on_currentloop}，取任意关于运动
 平面（假设它是平面运动，只要没有垂直于平面的分力，摆动就是在平面内的,即假设成立）位置对称的电流元$Id\boldsymbol {\ell }_1 = I(x_0, y_0, z_0)$，
-$Id\boldsymbol {\ell }_2 = I(x_0, -y_0, -z_0)$，这两点处的磁感应强度分别为$B_1 = (B_x, B_y, B_z)$，$B_2 = (-B_x, B_y, B_z)$。我们可以
+$Id\boldsymbol {\ell }_2 = I(x_0, -y_0, -z_0)$，这两点处的磁感应强度分别为$B_1 = (B_x, B_y, B_z)$，$B_2 = (-B_x, B_y, B_z)$。可以
 得到$Id\boldsymbol {\ell }_1 \times B_1 + Id\boldsymbol {\ell }_2 \times B_2 = 0\mathbf{i} + 2(z_0B_x-x_0B_z)\mathbf{j} + 2(x_0B_y-y_0B_x)\mathbf{k}$。
 所以棒是可以在平面运动的。
 \begin{figure}[H]
@@ -365,7 +363,7 @@ $U = \left \{
 
 上面的方程用来计算是比较困难的，下面进行简化：
 
-假设能量的损失主要发生在碰撞上面，忽略空气阻力等阻尼，于是我们给出运动方程：
+假设能量的损失主要发生在碰撞上面，忽略空气阻力等阻尼，于是给出运动方程：
 \begin{equation}
     J_{0}*\frac{d^{2}\alpha}{dt^{2}} + F_{L}(\alpha) = 0
 \end{equation}
@@ -452,7 +450,7 @@ $F_c = \int_{\Omega} \rho\omega^2r \,d\Omega$，其中$\Omega$表
 
 \subsection{进动、章动与过渡}
 由于棒与板之间存在摩擦，摆动的能量就会损耗，这会使圆锥摆向复摆过渡；这种过渡的结果就是产生了进动和章动。
-因为圆锥摆会退化为平面的摆动，但它很难达到不偏离轴平面（我们定义通过轴的复摆摆动平面为轴平面），于是根据上面的受力分析，
+因为圆锥摆会退化为平面的摆动，但它很难达到不偏离轴平面（定义通过轴的复摆摆动平面为轴平面），于是根据上面的受力分析，
 会有一个指向轴的磁场力，这会产生一个力矩，这个力矩的作用效果就是使棒进动。但如果它大了或小了，那么就变成了章动。
 
 \subsection{微小因素}
@@ -461,7 +459,7 @@ $F_c = \int_{\Omega} \rho\omega^2r \,d\Omega$，其中$\Omega$表
 第一，地磁场的作用。这个在要求精度不高的情况下可以忽略。地磁场的大小为$0.5-0.6Gs$，
 而钕磁铁一般为$12200-14800Gs$，相比之下，可以忽略地磁。
 
-第二，科氏力。由于地球是非惯性系，棒在运动过程中会受到科氏力的作用。我们取最大的角度使$F_k = 2v\omega$，
+第二，科氏力。由于地球是非惯性系，棒在运动过程中会受到科氏力的作用。取最大的角度使$F_k = 2v\omega$，
 这样近似结果约为$10^{-4}N$。实验上，在控制无垂直于振动面的速度情况下，摆顺逆时针进动出现
 的概率近似相等。说明科氏力的影响比较小。
 
@@ -489,7 +487,7 @@ $F_c = \int_{\Omega} \rho\omega^2r \,d\Omega$，其中$\Omega$表
 预实验的实验平台比较简陋，亚克力板是由两个铁架台夹住的。但这不影响预实验的总体效果。
 
 \section{实验方法}
-项目考虑到数据的收集方式对实验结果会有一定的影响，于是在与实验中对比了两种方法——
+项目考虑到数据的收集方式对实验结果会有一定的影响，于是在预实验中对比了两种方法——
 1.摄像法。以手机摄像功能对实验过程进行录像，后续通过视频处理软件数出两个“周期”的周期的
 帧数，进而得出周期的大小。2.声波法。通过手机记录摆动过程中的音频数据，由于棒和板碰撞的过程中
 响度较大，所以可以通过声波振幅谱中峰值的时间间隔得出周期。
@@ -551,7 +549,7 @@ $F_c = \int_{\Omega} \rho\omega^2r \,d\Omega$，其中$\Omega$表
 
 现对数据做如下分析：
 
-实验对下同条件下的摆动进行三次测量，测量结果如图\ref{re}。
+实验对同条件下的摆动进行三次测量，测量结果如图\ref{re}。
 \begin{figure}[H]
     \centering
     \includegraphics[width=12cm]{figures/重复性.png}
@@ -596,9 +594,9 @@ $F_c = \int_{\Omega} \rho\omega^2r \,d\Omega$，其中$\Omega$表
     \label{改变磁棒长度}
 \end{figure}
 如图\ref{改变介质板厚}、\ref{改变磁场分布}、\ref{改变磁棒长度}分别给出控制介质板
-厚度、磁场分布、棒长的结果，从对比之中我们可以得到一下结果：
+厚度、磁场分布、棒长的结果，从对比之中可以得到一下结果：
 \begin{itemize}
-    \item 介质板越厚，相同倾角，摆动的周期越大；且周期衰减的越慢；
+    \item 介质板越厚，相同倾角，摆动的周期越大；
     \item 磁铁对磁棒的影响比较复杂，现有的数据无法做出较为严谨的判断；
     \item 棒越长，周期越大，周期衰减越慢。
 \end{itemize}
@@ -630,7 +628,7 @@ Gauss 积分、Romberg积分等\cite{Numerical_Analysis}。综合考虑效率、
 \section{COMSOL 模拟}
 通过COMSOL模拟物理场（图\ref{COMSOL}），可以得到棒长与周期的定性关系——周期
 随棒长增大而增加（如图\ref{COMSOL结果}）。同时在棒长较短时，仿真与实验拟合
-较好。可能的原因是当棒长较长时，棒与介质板接触不仅密导致的。
+较好。可能的原因是当棒长较长时，棒与介质板接触不紧密导致的。
 
 但是板厚的变化对周期的影响模拟结果并没有体现。
 
